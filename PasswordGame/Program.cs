@@ -51,9 +51,7 @@ namespace PasswordGame
                 attemptCount++;
 
                 Console.Write("\nВведите пароль >> ");
-                int.TryParse(Console.ReadLine(), out int passTry);
-
-                if(passTry.ToString().Length != 3)
+                if(int.TryParse(Console.ReadLine(), out int passTry) == false || passTry.ToString().Length != 3)
                 {
                     Console.WriteLine("Вы ввели не трёхзначное число!");
                     Console.WriteLine($"В следующий раз будьте внимательны!\nПопыток осталось: {attemptAmount}");
@@ -81,7 +79,6 @@ namespace PasswordGame
                     Console.WriteLine($"Попыток осталось: {attemptAmount}");
                 }
             }
-
             Console.WriteLine("\nВам не удалось угадать пароль. Попыток больше нет. Сожалею, вы проиграли");
             Console.WriteLine($"\nПаролем было число {password}");
             Console.WriteLine($"Ближайшая попытка - число {closestAttempt}\n");
