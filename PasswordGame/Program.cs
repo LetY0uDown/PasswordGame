@@ -23,21 +23,19 @@ namespace PasswordGame
             Console.WriteLine("5. Эксперт - 4 попытки;");
             Console.WriteLine("6. Фортуна - 1 попытка");
             Console.Write("\nВведите номер режима >> ");
-#endregion
-
-            int.TryParse(Console.ReadLine(), out int mode);
-            int[] attempts = { 1000, 15, 10, 7, 4, 1 };
-            int attemptAmount, attemptCount = 0, closestAttempt = 1000;
-            try
+            #endregion
+            int mode = 0;
+            if (int.TryParse(Console.ReadLine(), out mode) == false || mode < 1 || mode > 6)
             {
-                attemptAmount = attempts[mode - 1];
-                Console.WriteLine($"Режим выбран! Попыток: {attemptAmount}");
-            }
-            catch (IndexOutOfRangeException)
-            {
-                Console.WriteLine("Режим выбран неверно! Попробуйте ещё раз");
+                Console.WriteLine("Режим выбран неверно! Попробуйте ещё раз!");
                 return;
             }
+
+            int[] attempts = { 1000, 15, 10, 7, 4, 1 };
+            int attemptAmount, attemptCount = 0, closestAttempt = 1000;
+
+            attemptAmount = attempts[mode - 1];
+            Console.WriteLine($"Режим выбран! Попыток: {attemptAmount}");
 
             Console.WriteLine("\n\t\t\t\tУдачи!");
             Console.WriteLine("Нажмите любую клавишу чтобы играть...");
